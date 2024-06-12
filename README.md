@@ -8,11 +8,13 @@ $ git clone https://github.com/intel/linux-sgx.git
 ```
 Then please copy and paste the code in the client folder into ```linx_sgx/external/sgx-emm/``` and make :
 ```
-$ cp -r DM-TEE/client/ ../linux_sgx/external/sgx_emm/
+$ cp -r ./client/ ../linux_sgx/external/sgx_emm/
 $ make
 ```
 
-Our disaggregated memory system is based on the Clio project, and we build a example FPGA kernel structure on Alveo U200 board. Please follow the command to compile the kernel:
+Our disaggregated memory system is based on the Clio project, and we build a demo FPGA kernel structure on the Alveo U200 board. Our demo kernel is based on the [XUP Vitis Network Example](https://github.com/Xilinx/xup_vitis_network_example/). Please follow the command to compile the kernel:
 ```
-$ make all TARGET=hw
+$ git clone https://github.com/Xilinx/xup_vitis_network_example.git
+$ cp -r ./SMNS/ ${path-to-vnx repo}/Basic_kernels/
+$ make all TARGET=hw DESIGN=basic PLATFORM=${corresponding FPGA platform}
 ```
